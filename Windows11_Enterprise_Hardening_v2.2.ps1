@@ -13,10 +13,6 @@
        + The ONLY two FQDNs not already covered were TPM-attestation endpoints
          (microsoftaik.azure.net and www.nuvoton.com); v2.2 adds those exact
          FQDNs to the sinkhole (see Section 15b-3). Everything else is unchanged.
-   NOTE on the "higher data" question: the v2.1 RAW NIC total was inflated by
-   broadcast/multicast SUBNET NOISE (Recv:Send ~36:1), not by OS egress. Use
-   NetMonitor v4.3, which separates unicast (real, WAN-able) from broadcast/
-   multicast (local-only) using the NIC's native per-cast counters.
    ----
  VERSION : v2.1  (refinement of v2.0, driven by the 30-hour v2.0 validation)
    v2.1 DELTA (vs. v2.0) - closes the residual talkers the 30-hour settled-state
