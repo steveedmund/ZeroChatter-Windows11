@@ -1,7 +1,7 @@
 <#
 ====
  Network Traffic Monitor v4.3
- Author:  Steve  (v4.2/4.3 noise-filtering additions by TIPS Golden Image Team)
+ Author:  Steve  (v4.2/4.3 noise-filtering additions)
  Version: 4.3
  Date:    2026-06-25
 
