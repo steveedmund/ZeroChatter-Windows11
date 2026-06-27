@@ -6,14 +6,14 @@ Aggressive Windows 11 Enterprise network hardening and monitoring scripts design
 > This repository provides a rigorous, data-driven approach to silencing Windows 11 Enterprise telemetry and background network chatter, originally developed for extreme low-bandwidth environments like Iridium satellite deployments.
 > 
 > It consists of two primary, independent tools used in a reconnaissance-and-block workflow:
-> * **Network Traffic Monitor (v4.3):** A PowerShell monitoring tool that captures network activity over 48-72 hour periods[cite: 1]. It bypasses fragile parsing tools by reading native adapter statistics, automatically stripping out local broadcast and multicast subnet noise (like Proxmox cluster chatter or mDNS) to provide an accurate, ground-truth measurement of true WAN-capable egress.
+> * **Network Traffic Monitor (v4.3):** A PowerShell monitoring tool that captures network activity over 48-72 hour periods. It bypasses fragile parsing tools by reading native adapter statistics, automatically stripping out local broadcast and multicast subnet noise (like Proxmox cluster chatter or mDNS) to provide an accurate, ground-truth measurement of true WAN-capable egress.
 > * **Aggressive Network Hardening (v2.2):** A surgical, defense-in-depth script that blocks Microsoft's background chatter using exact-path firewall discovery, targeted service disables, policy tweaks, and a massive dual-stack HOSTS sinkhole. It successfully reduces OS-generated background bandwidth to <100 MB per month while leaving core operator applications and on-box Defender real-time AV functional.
 
 ## The Problem: Extreme Bandwidth Constraints
 
 Modern operating systems assume a constantly connected, high-bandwidth environment. Windows 11 Enterprise natively generates hundreds of megabytes of background chatter per month through services like Windows Update, Defender cloud telemetry, MSN Widget feeds, and Edge WebView2 CDN pulls. 
 
-For remote field deployments, this behavior is catastrophic. Many isolated rigs rely on Iridium satellite modems operating at 19,200 baud, or have strict 1 GB/month data caps across the entire site[cite: 2]. When the OS consumes this limited bandwidth, operational traffic is choked out. 
+For remote field deployments, this behavior is catastrophic. Many isolated rigs rely on Iridium satellite modems operating at 19,200 baud, or have strict 1 GB/month data caps across the entire site. When the OS consumes this limited bandwidth, operational traffic is choked out. 
 
 Previous attempts to measure this OS traffic were flawed. Standard monitoring tools captured all Layer-2 NIC traffic, meaning local subnet flooding (ARP, LLMNR, SSDP, and Proxmox cluster chatter) severely inflated the data, making it look like the endpoint was leaking WAN data when it was just receiving local noise.
 
